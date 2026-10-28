@@ -4,6 +4,7 @@ from sqlalchemy import (
     Column,
     DateTime,
     Integer,
+    Float,
     MetaData,
     String,
     Table,
@@ -25,6 +26,15 @@ notes = Table(
     Column("title", String(50)),
     Column("description", String(50)),
     Column("created_date", DateTime, default=func.now(), nullable=False),
+)
+events = Table(
+    "events",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("title", String(80)),
+    Column("city", String(50)),
+    Column("price_usd", Float),
+    Column("seats_left", Integer),
 )
 
 # databases query builder
